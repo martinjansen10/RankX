@@ -1,0 +1,226 @@
+﻿<!--<city-selection-modal></city-selection-modal> -->
+<!--<user-detail-modal></user-detail-modal>-->
+<!-- Navigation Bar -->
+<div ui-view="navbar" style="position: fixed; z-index: 1000; width: 100%"></div>
+
+<div class="container" style="padding-left:5px;padding-right:5px; margin-bottom: 20px;">
+    
+    <div id="veil" ng-show="vm.isLoading"></div>
+    <div id="feedLoading" ng-show="vm.isLoading">
+        <div style="text-align: center" ng-if="vm.isLoading">
+            <!-- <div><img src="/assets/images/loading.gif" class="img" style="width:50px;height:50px"/></div> -->
+            
+            <div><img src="/assets/images/loading.gif" class="img" style="width:50px;height:50px"/></div>
+            <p style="font-size:large">{{vm.veilMsg}}</p>
+        </div>
+    </div>
+
+    <div ng-hide="vm.isLoading">
+                 
+        <div class="container" style="margin-top: 60px" ng-show="vm.barIsActive"> <!-- style="padding-left:5px;padding-right:5px;"> -->
+            <div class="row" style="padding-bottom:10px">
+                
+                <!--
+                    <div class="col-xs-12 col-md-5" style="padding-left:0px;padding-right:0px;" ng-if="!vm.selCityActive">
+                        <button class="col-xs-10 btn btn-default" ng-click="vm.scopeCity()"><span class="fa fa-dot-circle-o">
+                            </span>&nbsp&nbspSan Diego, CA&nbsp&nbsp</button>
+                        <button class="col-xs-2 btn btn-default pull-right" ng-click="vm.toggleSelCity()"><span class="fa fa-cog"></span></button>    
+                    </div> 
+                    <div class="col-xs-12 col-md-5" style="padding-left:0px;padding-right:0px;" ng-if="vm.selCityActive">
+                    <div class="col-xs-3" style="padding-left:0px;padding-right:0px;">
+                        <p style="padding-top:5px">Select City:</p>
+                    </div>
+                    <div class="col-xs-7" style="padding-left:0px;padding-right:0px;">
+                        <input type="text" class="form-control" placeholder="San Diego" ng-model="vm.city" ng-change="" id=""  disabled>
+                    </div> 
+                        <button class="col-xs-2 btn btn-default pull-right" type="submit" ng-click="vm.toggleSelCity()"> 
+                        OK</button>
+                    </div>
+                    -->
+                <div class="hidden-sm hidden-md hidden-lg hidden-xl">
+                    <div class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('food')">Food</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('activities')">Activities</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('nightlife')">Nightlife</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('beauty')">Beauty</button>
+                    </div>
+                    <div class="col-xs-12" style="padding-left:0px;padding-right:0px">
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('shopping')">Shopping</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('events')">Events</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('family')">Family</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('health')">Health</button>
+                    </div>
+                    <div class="col-xs-12" style="padding-left:0px;padding-right:0px;padding-bottom:7px">
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('services')">Services</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('fitness')">Fitness</button>
+                        <button class="col-xs-3 btn btn-default" ng-click="vm.quickFilter('sports')">Sports</button>
+                        <button class="col-xs-3 btn btn-default" style="padding-left:5px" ng-click="vm.quickFilter('neighborhood')">
+                        <small>{{vm.nh != ''? vm.nh:'Neighborhood'}}</small></button>
+                    </div>
+                </div>
+                <div class="hidden-xs">
+                    <div class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('food')">Food</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('activities')">Activities</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('nightlife')">Nightlife</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('beauty')">Beauty</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('shopping')">Shopping</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('events')">Events</button>
+                    </div>
+                    <div class="col-xs-12" style="padding-left:0px;padding-right:0px;padding-bottom:7px">
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('family')">Family</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('health')">Health</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('services')">Services</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('fitness')">Fitness</button>
+                        <button class="col-xs-2 btn btn-default" ng-click="vm.quickFilter('sports')">Sports</button>
+                        <button class="col-xs-2 btn btn-default" style="padding-left:5px" ng-click="vm.quickFilter('neighborhood')">
+                        {{vm.nh != ''? vm.nh:'Neighborhood'}}</button>
+                    </div>
+                </div>
+                <div class="col-xs-12" style="padding-left:0px;padding-right:0px;padding-bottom:7px;"
+                ng-show="vm.nhctrl">
+                    <div class="col-xs-3" style="padding-left:0px;padding-right:0px;">
+                        <p style="padding-top:5px">Neighborhood</p>
+                    </div>
+                    <div class="col-xs-5" style="padding-left:0px;padding-right:0px;">
+                        <input type="text" class="form-control" placeholder="Enter Neighborhood" ng-model="vm.nhinp" 
+                        bs-options="c for c in vm.nhops" bs-typeahead>
+                    </div> 
+                        <button class="col-xs-2 btn btn-success" type="submit" ng-click="vm.selectNh()"> 
+                        Select</button>
+                        <button class="col-xs-2 btn btn-default" type="submit" ng-click="vm.clearNh()"> 
+                        Clear</button>
+                </div>
+                <div class="col-xs-12" style="padding-left:0px;padding-right:0px;">
+                    <div class="col-xs-7" style="padding-left:0px;padding-right:0px;">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search San Diego" ng-model="vm.val" ng-change="vm.getResults()" id="SearchInput">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3" style="padding-left:0px;padding-right:0px">
+                        <button class="btn btn-default" style="width:100%" ng-click="vm.goAddRank()">Add Rank&nbsp&nbsp
+                            <!-- <i class="glyphicon glyphicon-plus"></i> --></button>
+                    </div>
+                    <!--<div class="col-xs-2" style="padding-left:0px;padding-right:0px;"> -->
+                        <button class="col-xs-2 btn btn-default pull-right" ng-click="vm.showTrends()"><i class="fa fa-rss" aria-hidden="true"></i></button>
+                    <!--</div> -->
+                </div>
+            </div> 
+            <!--
+            <div class="col-xs-12 fade in" ng-if="vm.showFilters" style="font-size: 18px">
+                <h2> Filters </h2>
+                <hr style="margin: 0px"/>
+                <form class="row form-horizontal">
+                    <div class="col-xs-12 col-sm-5">
+                    <fieldset style="margin-top:10px">
+                        <legend style="text-align:center">Location</legend>
+                        <div class="row" style="margin-bottom: 10px;padding:20px 0px" ng-class="vm.filterOptions.isCity ? 'active-back' : ''">
+                            <div class="col-xs-5"><button class="btn btn-primary" ng-class="vm.filterOptions.isCity ? 'active' : ''" ng-click="vm.switchLocationScope('city')">In City:</button></div>
+                            <div class="col-xs-7">San Diego</div>
+                        </div>
+                        <div class="row"  ng-class="vm.filterOptions.isNh ? 'active-back' : ''" style="padding:20px 0px"> 
+                            <div class="col-xs-5"><button class="btn btn-primary" ng-class="vm.filterOptions.isNh ? 'active' : ''" ng-click="vm.switchLocationScope('neighborhood')">Neighborhood:</button></div>
+                            <div class="col-xs-7">
+                                <ui-select ng-model="vm.filterOptions.cnh" on-select="vm.selectNh($item, $model)" title="Choose a Neighborhood"  ng-disabled="!vm.filterOptions.isNh">
+                                    <ui-select-match>
+                                        <span ng-bind="$select.selected"></span>
+                                    </ui-select-match>
+                                    <ui-select-choices repeat="item in (vm.nhs | filter: $select.search) track by item">
+                                        <span ng-bind="item"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    </div>
+                
+                    <div class="col-xs-12 col-sm-7">
+                    <fieldset style="margin-top:10px">
+                        <legend style="text-align:center">Topics</legend>
+                        <div class="col-xs-12">
+                            <ul class="list-group" style="list-style-type: none;">
+                                <li class="">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="Select All" ng-checked="vm.filterOptions.isAllTopics" ng-click="vm.selectTopic('All')">Select All</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul class="list-group" style="list-style-type: none;">
+                                <li class="" ng-repeat="topic in vm.allTopics.slice(0, vm.allTopics.length/2)">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="{{topic}}" ng-checked="vm.filterOptions.ctopics.indexOf(topic) > -1 ? 'selected' : ''" ng-click="vm.selectTopic(topic)">{{topic}}</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul class="list-group" style="list-style-type: none;">
+                                <li class="" ng-repeat="topic in vm.allTopics.slice(vm.allTopics.length/2)">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" value="{{topic}}" ng-checked="vm.filterOptions.ctopics.indexOf(topic) > -1 ? 'selected' : ''" ng-click="vm.selectTopic(topic)">{{topic}}</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                    </div>
+                    <button class="btn btn-default pull-right" ng-click="vm.toggleFilterBox()" >Hide Filters</button>
+                    <button class="btn btn-default pull-right" ng-click="vm.applyFilters()" >Apply</button>
+                </form>
+                
+                <hr/>
+            </div>-->
+        </div> 
+
+        <div class="input-group" style="width:100%" ng-if="vm.isAdmin&&!vm.childActive">
+            <!--<input type="text" class="form-control" placeholder="{{x.cval}}" data-ng-model="x.val">-->
+            <div class="text-center" ng-attr-style="display:{{vm.isAdmin ? 'inline':'none'}}">
+                <div class="btn-group col-sm-6 col-md-6">            
+                    <button class="btn btn-primary {{vm.selEditRank}} " ng-click="vm.editRank() ">Edit Mode</button>
+                    <button class="btn btn-primary {{vm.selViewRank}} " ng-click="vm.viewRank() ">View Mode</button>
+                </div>
+            </div>
+            <!--
+            <br ng-attr-style="display:{{vm.isAdmin ? 'inline':'none'}}">
+            <br ng-attr-style="display:{{vm.isAdmin ? 'inline':'none'}}">
+            <br ng-attr-style="display:{{vm.isAdmin ? 'inline':'none'}}">
+            -->
+        </div>
+        
+        <div ng-show="!vm.childActive">	
+            <search-block ng-click="vm.hideSearch()" query="{{vm.val}}" 
+                ans="true" ranks="true" length="vm.slen" init="vm.initready" data="vm.dataready" rod="vm.rodready"
+                scrollactive="!vm.childActive"></search-block>
+        </div>
+        <br ng-if="vm.childActive">
+        <br ng-if="vm.childActive">
+        <br ng-if="vm.childActive">
+        <div ui-view ng-if="!vm.isLoading && vm.childActive" class="container" id="page-containter" style=""></div>
+    </div>
+
+    <a href="#" class="back-to-top" style="display: inline;">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+
+    </a>
+</div>
+<br>
+<br>
+
+<footer class="footer"  
+    style=" position: fixed;
+            bottom: 0px;
+            background: white;
+            width: 100%;
+            padding-top: 20px;">
+    <div class="container">
+        <p class="text-muted">
+            Rank-X is a registered trademark property of Rank-X LLC. San Diego, CA - 2017
+            <span><a ng-click="vm.goPrivacyPolicy()">Privacy Policy</a></span>
+            <span><a ng-click="vm.goRankofDayConsole()">RoD</a></span></p>
+    </div>
+</footer>

@@ -1,0 +1,69 @@
+﻿<div class="well-rank" ng-if="vm.nsm" style="margin:0px;">
+        <h2 class="sub-header">{{vm.table.title}}
+          <span class="nomargin"><button type="button" class="glyphicon glyphicon-remove pull-right" 
+            style="margin:0px;padding:0px;border:0px;background-color:#006dcc;color:#002699;font-size:medium;" 
+            ng-click="vm.closeRank()"></button></span>
+        </h2>
+    </div>
+    <div class="well-rank" ng-if="vm.sm" style="margin:0px;">
+        <h3 class="sub-header">{{vm.table.title}}
+            <span class="nomargin"><button type="button" class="glyphicon glyphicon-remove pull-right" 
+            style="margin:0px;padding:0px;border:0px;background-color:#006dcc;color:#002699;font-size:medium;" 
+            ng-click="vm.closeRank()"></button></span>
+        </h3>
+    </div>
+
+<h3>{{vm.table.question}}</h3>
+<div class="form-group text-center">
+    <div class="well well-dark">Rank match <strong>{{vm.GP}}</strong> of <strong>{{vm.Tot}}</strong></div>
+</div>
+<div class="row">
+    <div class="col-xs-6 col-md-6 col-lg-6">
+        <div class="well well-light" ng-click="vm.selectAnswer(1)" ng-show="{{vm.type != 'Short-Phrase'}}">
+         <span ng-repeat="f in vm.fields | filter:(f.isrequired=true)" >
+    {{(f.name == "name" && vm.answer1.name) ? vm.answer1.name : ""}}
+    {{(f.name == "cityarea" && vm.answer1.cityarea) ? " - "+ vm.answer1.cityarea : ""}}
+    
+</span>
+        </div>
+        <img class="displayed" src="{{vm.answer1.imageurl}}" ng-click="vm.selectAnswer(1)" style="width:100%;max-height:300px"
+             ng-show="{{vm.type != 'Short-Phrase'}}">
+        <div class="container-answer" style="width:100%; height:auto;" ng-click="vm.selectAnswer(1)"
+             ng-show="{{vm.type == 'Short-Phrase'}}"> 
+             <br>
+            <h2 style="text-align:center"><strong>{{vm.answer1.name}}</strong></h2> <br>
+            <h4 style="text-align:center">{{vm.answer1.addinfo}}</h4>
+        </div>     
+    </div>
+    <div class="col-xs-6 col-md-6 col-lg-6">
+        <div class="well well-light" ng-click="vm.selectAnswer(2)" ng-show="{{vm.type != 'Short-Phrase'}}">
+            <span ng-repeat="f in vm.fields | filter:(f.isrequired=true)">
+    {{(f.name == "name" && vm.answer2.name) ? vm.answer2.name : ""}}
+    {{(f.name == "cityarea" && vm.answer2.cityarea) ? " - "+ vm.answer2.cityarea : ""}}
+</span>
+        </div>
+        <img class="displayed" src="{{vm.answer2.imageurl}}" ng-click="vm.selectAnswer(2)" style="width:100%;max-height:300px"
+             ng-show="{{vm.type != 'Short-Phrase'}}">
+        <div class="container-answer" style="width:100%; height:auto;" ng-click="vm.selectAnswer(2)"
+             ng-show="{{vm.type == 'Short-Phrase'}}">
+             <br> 
+            <h2 style="text-align:center"><strong>{{vm.answer2.name}}</strong></h2> <br>
+            <h4 style="text-align:center">{{vm.answer2.addinfo}}</h4>
+        </div>   
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="form-group text-left col-xs-6 col-md-6 col-lg-6">
+        <button ng-click="vm.answerDetail(1)" type="button" class="btn btn-success">Details</button>
+    </div>
+    <div class="form-group text-right col-xs-6 col-md-6 col-lg-6">
+        <button ng-click="vm.answerDetail(2)" type="button" class="btn btn-success">Details</button>
+    </div>
+</div>
+
+<div class="form-group text-center">
+    <button ng-click="vm.skipMatch()" type="button" class="btn btn-default">I don't know, Skip</button>
+    <button ng-click="vm.rankSummary()" type="button" class="btn btn-danger">Stop</button>
+</div>
+<br>

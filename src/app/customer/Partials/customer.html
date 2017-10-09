@@ -1,0 +1,29 @@
+<!-- Navigation Bar -->
+<div ui-view="navbar"></div>
+<br>
+<h2>Select business you wish to manage</h2>
+<div ng-repeat="x in vm.answers">
+		<label><input type="radio" name="businessradio" ng-click="vm.selAnswer(x)">&nbsp;&nbsp;{{x.name}}, {{x.location}}, {{x.cityarea}}</label>
+</div>
+
+<br>
+        
+<div class="text-center">
+    <div class="btn-group col-sm-6 col-md-6">
+        <button class="btn btn-success {{vm.loadMainPhoto}} " ng-click="vm.loadMainPhoto() ">Main Photo</button>
+        <button class="btn btn-primary {{vm.loadSpecials}} " ng-click="vm.loadSpecials() ">Specials</button>
+        <button class="btn btn-danger {{vm.loadPhotoGallery}} " ng-click="vm.loadPhotoGallery() ">Photo Gallery</button>
+    </div>
+</div>
+<br>
+<br>
+<div ui-view></div>
+<br>
+<br>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">
+            Rank-X is property of Rank-X LLC. San Diego, CA - 2016
+        </p>
+    </div>
+</footer>

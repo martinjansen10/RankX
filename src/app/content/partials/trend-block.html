@@ -1,0 +1,68 @@
+<div class="">
+    <div class="">
+        <div class="col-xs-12  trend-tab" style=" padding: 0px; background-color:#e6e6e6" >
+
+
+            <ul class="nav nav-tabs trend-tab" style="background-color: white">
+                <li class="active" style="cursor: pointer"><a data-toggle="tab" href="#userfeed">Feed</a></li>
+                <li style="cursor: pointer"><a data-toggle="tab" href="#popular">Popular</a></li>
+                <!--<li class="active" style="cursor: pointer"><a data-toggle="tab" href="#popular">Popular</a></li>-->
+                <li style="cursor: pointer"><a data-toggle="tab" href="#newest">Newest</a></li>
+            </ul>
+
+            <div class="tab-content" style="">
+                <div class="tab-pane in active fade" style="padding-top:10px;padding-bottom:10px;  " ng-class="showAll =='true' ?'':'trend-tab-single-page'" id="userfeed">
+                        
+                    <userfeed-block show-all=true show-qty="{{userfeedLimit}}"></userfeed-block>
+
+                    <p class="text-center" style="color:blue; margin-top:10px" ng-if="showAll == 'true'"><a class="btn btn-default" style='margin-right:20px;' ng-click="seeMore('userfeed')">See More</a><a class="btn btn-default" ng-click="goBack()">Back</a></p>
+                </div>
+                <div class="tab-pane fade" style="padding-top:10px;padding-bottom:10px;  " ng-class="showAll =='true' ?'':'trend-tab-single-page'" id="popular">
+                        
+                    <div class="col-xs-12 media ranking-blog-item" ng-repeat="ranking in popularOrder  | limitTo:popularLimit" style="cursor: pointer;" ng-click="rankSel(ranking)">
+
+                        <div class="profile-avatar-wrapper media-left">
+                            <img ng-src="{{ranking.realimage}}" />
+                        </div>
+                        <div class="media-body" style="vertical-align: middle;">
+                            {{ranking.title}}
+                            <span class="pull-right">{{ranking.views}} Views</span>
+                        </div>
+
+                    </div>
+                    <p class="text-center" style="color:blue; margin-top:10px" ng-if="showAll == 'true'"><a class="btn btn-default" style='margin-right:20px;' ng-click="seeMore('popular')">See More</a><a class="btn btn-default" ng-click="goBack()">Back</a></p>
+                </div>
+                <div class="tab-pane fade"  style="padding-top:10px;padding-bottom:10px; " id="newest" ng-class="showAll =='true' ?'':'trend-tab-single-page'">
+                    
+                    <div class="col-xs-12 media ranking-blog-item" ng-repeat="ranking in newestOrder| limitTo:newestLimit"  ng-click="rankSel(ranking)" style="cursor: pointer;">
+
+                        <div class="profile-avatar-wrapper media-left">
+                            <img ng-src="{{ranking.realimage}}" />
+                        </div>
+                        <div class="media-body" style="vertical-align: middle;">
+                            {{ranking.title}}<span class="pull-right">{{ranking.humanized}}</span>
+                            <!-- <span class="pull-right">{{ranking.timestmp.slice(0, 10)}}</span> -->
+                        </div>
+
+                    </div>
+
+                    <p class="text-center" style="color:blue; margin-top:10px" ng-if="showAll == 'true'"><a class="btn btn-default" style='margin-right:20px;' ng-click="seeMore('newest')">See More</a><a class="btn btn-default" ng-click="goBack()">Back</a></p>
+                </div>
+
+            </div>
+
+            <p class="text-center " style="color:blue;margin-top:10px" ng-if="showAll == 'false'" ><a class="btn btn-default" href="/trends">See More</a></p>
+            <!--
+    <div class="row" ng-click="rankSel(resultsTop[0],false)" ng-if="isBasic">
+        <div class="container-bgbox col-xs-6 col-sm-3 col-md-3 col-lg-2">
+            <bg-box2 bc="{{bc}}" shade="{{shade}}" fc="{{fc}}" text="{{title}}" dir="horizontal" 
+            w="100%" h="{{sm ? '150':'200'}}" stats="{{stats}}"></bg-box>
+        </div>
+        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2" style="margin:0px;padding:0px;border:0px;" ng-if="!isShortPhrase">
+            <img ng-src="{{image1}}" ng-attr-style="display:{{image1 != undefined ? 'inline':'none'}};width:100%;height:{{sm ? '150px':'200px'}};">
+        </div>
+    </div>
+    -->
+        </div>
+    </div>
+</div>

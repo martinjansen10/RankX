@@ -1,0 +1,367 @@
+<!--
+<div ng-if="!vm.fbm">
+		<div class="input-group" ng-attr-style="background-color:{{vm.querybc}};padding:5px">
+			<input type="text" class="form-control" placeholder="Search in {{vm.searchScope}}" 
+			ng-model="vm.val" ng-change="vm.getResults()" id="SearchInput">
+			<div class="input-group-btn">
+				<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			</div>
+		</div>
+	</div> 
+	<br ng-if="!vm.hidelogo">  
+
+	<div class="text-center" ng-hide="vm.searchActive">
+		<div class="btn-group">
+			<button class="btn btn-default {{vm.isCity ? 'active':''}}" ng-click="vm.switchScope(1)">San Diego</button>
+			<button class="btn btn-default {{vm.isNh ? 'active':''}}" ng-click="vm.switchScope(2)">Neighborhood</button>
+		</div>
+	</div>
+	</br ng-if="!vm.hidelogo">
+</div>
+-->
+
+<!--<div ng-attr-style="display:{{vm.isNh ? 'inline':'none'}}" ng-if="!vm.fbm">
+	<br ng-if="!vm.hidelogo">
+	<div class="dropdown">
+		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="nhdropdown" style="width:200px">
+			{{vm.cnh}} <span class="caret">
+		</button>
+		<ul class="dropdown-menu dropdown-menu-middle">
+			<li ng-repeat="x in vm.nhs | orderBy: x"><a ng-click="vm.selnh(x)">{{x}}</a></li>  
+			<li ng-repeat="x in vm.nhs | orderBy: x"><span ng-click="vm.selnh(x)">{{x}}</span></li> 
+			<li ng-repeat="x in vm.nhs | orderBy: x" ng-click="vm.selnh(x)"><a>{{x}}</a></li>
+		</ul>
+	</div> 	
+</div>
+
+<br ng-if="vm.isNh">
+<div ng-attr-style="display:{{((vm.isNhRdy || vm.isCity) && (vm.searchActive == false)) ? 'inline':'none'}}" ng-if="!vm.fbm">-->
+<!--	
+	<content-block type='rankofweek' dynamic="false" rankofweek="true"></content-block>
+<!--
+		<table class="table" style="border-style:none;" ng-if="vm.isCity">
+			<tbody>
+				<thead>
+					<tr>
+						<th ng-attr-style="{{vm.headerStyle}}">
+						Quick Links</th>
+					</tr>
+				</thead>
+			</tbody>
+		</table>
+
+		<div class="text-center" ng-if="vm.isCity">
+			<button class="btn btn-danger" ng-click="vm.foodNearMe()">Food near me</button>
+			<button class="btn btn-primary" ng-click="vm.events()">Events</button>
+			<button class="btn btn-success" ng-click="vm.selfimprove()">I feel lucky</button>
+		</div>
+	<!-- </div> -->
+	
+	 <!-- <br ng-if="vm.isCity"> --> 
+<!--	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin:0px;padding:0px;border:0px;"> -->	
+		
+<!--	</div> -->
+	<!--<br ng-if="vm.sm"> -->
+	<!--
+<div class="row">
+
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8"  ng-attr-style="{{vm.sm? '':'padding-right: 5px;'}}">
+		<div class="col-xs-12 col-md-6 col-sm-6">
+			<rank-of-day part="'title'"></rank-of-day>
+		</div>
+		<div class="col-xs-12 col-md-6 col-sm-6">
+			<rank-of-day part="'image'"></rank-of-day>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-4"   ng-attr-style="{{vm.sm? 'margin-bottom: 10px':'height: 200px;  padding: 0px'}};display: flex;" id="facebook-container">
+		<div style="text-align: center; align-self: center; width:800px"  id="facebook-display">
+		</div>
+	</div>
+</div>
+-->
+<!-- <div class="row"> -->
+	<!--<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8" ng-attr-style="{{vm.sm? '':'padding-right: 5px;'}}">-->
+		<!-- <div class="col-xs-12 col-sm-6 col-md-4"  ng-repeat="ranking in vm.initalHomeData"  ng-if="vm.initalHomeData">
+		<!--	<rank-item rank-object="ranking"></rank-item> -->
+		<!-- </div> 
+		<!--
+		<div class="col-xs-12 col-md-6"  ng-repeat="ranking in vm.initalHomeData"  ng-if="vm.initalHomeData.length<(vm.initialDataCount/2)">
+			<rank-item rank-object="ranking"></rank-item>
+
+		</div>
+		<div class="col-xs-12 col-md-6" ng-repeat="ranking in vm.initalHomeData.slice(0, (vm.initialDataCount/2))" ng-if="vm.initalHomeData.length>=(vm.initialDataCount/2)">
+			<rank-item rank-object="ranking"></rank-item>
+		</div>
+		-->
+	<!--</div> -->
+	<!--	
+	<div class="col-xs-12 col-sm-6 col-md-4 " ng-attr-style="{{vm.sm? 'margin-bottom: 10px; background-color: #e6e6e6; width: calc(100% - 30px); margin-left: 15px; padding: 0px':'padding-right: 0px;padding-left: 0px; background-color: #e6e6e6; height: 410px;'}}" id="userfeed-container">
+		<userfeed-block ng-if="vm.pageDataLoaded" show-all=false></userfeed-block>
+
+		<div ng-if="!vm.pageDataLoaded" class="col-xs-12 text-center">
+			<a>
+				<img src="/assets/images/scrolling.gif" class="img" style="width:15px;height:15px"/>
+				Loading Feed...
+			</a>
+		</div>
+	</div>
+	-->
+<!-- </div> -->
+<!--
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8" ng-attr-style="{{vm.sm? '':'padding-right: 5px;'}}">
+
+		<div class="col-xs-12  col-md-6" ng-repeat="ranking in vm.initalHomeData.slice((vm.initialDataCount/2))"  ng-if="vm.initalHomeData.length>=(vm.initialDataCount/2)">
+			<rank-item rank-object="ranking"></rank-item>
+		</div>
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4" ng-attr-style="{{vm.sm? '':'padding-right: 0px;padding-left: 0px;'}}">
+		<trend-block  ng-if="vm.pageDataLoaded"  show-all=false></trend-block>
+		<div ng-if="!vm.pageDataLoaded" class="col-xs-12 text-center">
+			<a>
+				<img src="/assets/images/scrolling.gif" class="img" style="width:15px;height:15px"/>
+				Loading ...
+			</a>
+		</div>
+	</div>			
+</div>
+-->
+<!--<div class="row">
+	<!-- <div class="viewport" id="viewport-scopeDatasource" ui-scroll-viewport>
+		<div class="item" ui-scroll="item in vm.datasource">{{item}}</div>
+	</div> -->
+	<!--<div infinite-scroll='vm.loadMore()'
+		infinite-scroll-distance='0'
+		infinite-scroll-disabled='(!vm.pageDataLoaded || vm.scrollDataLoading) || vm.endReached'
+		class="col-xs-12"
+		id="inifinite-container"
+		style="padding:0px;margin:0px"
+	>
+		
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="rankingID in vm.scrollingData.slice(vm.startIndex, vm.currentIndex)">
+			<!-- <rank-item rank-object="vm.uniqueResult[rankingID]"></rank-item> -->
+
+		<!--</div>
+		<div ng-if="(vm.pageDataLoaded || vm.scrollDataLoading) && !vm.endReached" class="col-xs-12 text-center">
+			<a>
+				<img src="/assets/images/loading.gif" class="img" style="width:50px;height:50px"/>
+				Loading More...
+			</a>
+		</div>
+		<div ng-if="vm.endReached" class="col-xs-12 text-center" style="border: 1px solid #00b3e4;font-size: 14px">
+			End Reached.
+		</div>
+	</div>
+</div>
+<!--<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="lifestyle" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="social" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="food" type="basic"></rank-block>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="health" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="beauty" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="services" type="basic"></rank-block>
+	</div>
+</div>	
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="politics" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="sports" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="city" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="personalities" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="dating" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="technology" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="lifestyle" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="social" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="food" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="health" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="beauty" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="services" type="basic"></rank-block>
+	</div>
+</div>	
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="politics" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="sports" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="city" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="personalities" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="dating" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="technology" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="lifestyle" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="social" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="food" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="health" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="beauty" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="services" type="basic"></rank-block>
+	</div>
+</div>	
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="politics" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="sports" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="city" type="basic"></rank-block>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="personalities" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">	
+		<rank-block theme="dating" type="basic"></rank-block>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+		<rank-block theme="technology" type="basic"></rank-block>
+	</div>
+</div>-->
+
+<!--	
+	<div class="row" style="border:0px;padding:0px;margin:0px;">
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type="lifestyle" dynamic="false"></content-block>
+		</div>
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='social' dynamic="false"></content-block>
+		</div>
+	</div>
+	
+	<div class="row" style="border:0px;padding:0px;margin:0px;">
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='food' dynamic="false"></content-block>
+		</div>
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='health' dynamic="false"></content-block>
+		</div>
+	</div>
+	<!--
+	<div class="row" style="border:0px;padding:0px;margin:0px;">
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type="politics" dynamic="false"></content-block>
+		</div>
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='sports' dynamic="false"></content-block>
+		</div>
+	</div>
+	-->
+	<!--
+	<div class="row" style="border:0px;padding:0px;margin:0px;">
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='city' dynamic="false"></content-block>
+		</div>
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='personalities' dynamic="false"></content-block>
+		</div>
+	</div>
+	-->
+<!--	
+	<div class="row" style="border:0px;padding:0px;margin:0px;">
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='beauty' dynamic="false"></content-block>
+		</div>
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='services' dynamic="false"></content-block>
+		</div>
+	</div>
+	<!--
+	<div class="row" style="border:0px;padding:0px;margin:0px;">
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='neighborhood' dynamic="false"></content-block>
+			<content-block type='technology' dynamic="false"></content-block>
+		</div>
+		<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+			<content-block type='dating' dynamic="false"></content-block>
+		</div>
+	</div>
+	-->
+<!--	
+<div ng-if="vm.fbm">
+	<div class="well-small" style="background-color:#d9d9d9;color:#24478f; padding:5px;">
+		<P>Thanks for visiting Rank-X. You can use the ranks below to give us feedback and suggestions or 
+			you can also reach us by email at: <br><strong>contact@rank-x.com</strong></p>		
+	</div>
+<br>
+<div class="row" style="border:0px;padding:0px;margin:0px;">
+	<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+		<content-block type="rxfeedback" dynamic="false"></content-block>
+	</div>
+	<div class="col-md-6" style="border:0px;padding:3px;margin:0px;">
+		<content-block type='rxsuggestion' dynamic="false"></content-block>
+	</div>
+</div>
+<div class="text-right">
+	<button class="btn btn-default" ng-click="vm.goHome()">Home</button>
+	</div>
+</div>-->

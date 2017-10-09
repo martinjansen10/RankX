@@ -1,0 +1,30 @@
+
+<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-4"  ng-repeat="ranking in initalHomeData"  ng-if="initalHomeData">
+			<rank-item rank-object="ranking"></rank-item>
+		</div>
+</div>
+<div class="row">
+	<div infinite-scroll='loadMore()'
+		infinite-scroll-distance='0'
+		infinite-scroll-disabled='(!pageDataLoaded || scrollDataLoading) || endReached'
+		class="col-xs-12"
+		id="inifinite-container"
+		style="padding:0px;margin:0px"
+	>
+		
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="rankingID in scrollingData.slice(startIndex, currentIndex)">
+			<rank-item rank-object="uniqueResult[rankingID]"></rank-item>
+
+		</div>
+		<div ng-if="(pageDataLoaded || scrollDataLoading) && !endReached" class="col-xs-12 text-center">
+			<a>
+				<img src="/assets/images/loading.gif" class="img" style="width:50px;height:50px"/>
+				Loading More...
+			</a>
+		</div>
+		<div ng-if="endReached" class="col-xs-12 text-center" style="border: 1px solid #00b3e4;font-size: 14px">
+			End Reached.
+		</div>
+	</div>
+</div>

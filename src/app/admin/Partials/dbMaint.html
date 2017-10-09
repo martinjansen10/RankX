@@ -1,0 +1,122 @@
+<div class="container" ng-if="vm.isAdmin">
+	<h1>Database Maintenance</h1>
+	<button class="btn btn-success" ng-click="vm.showUrefAns()">Unreferenced Answers</button>
+	<br>
+	<button class="btn btn-danger" ng-click="vm.deleteAnswers()">Delete Answers</button>
+	<button class="btn btn-default" ng-click="vm.showPossibleDuplicated()">Show Possible Duplicated</button>
+	<button class="btn btn-default" ng-click="vm.showDuplicatedOnlyName()">Show Duplicated Only Name</button>
+	<button class="btn btn-default" ng-click="vm.showDuplicatedByLocation()">Show Duplicated By Location</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.findPhoneWebsite()">Phone Numbers & Website</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.findDuplicatedRanks()">Duplicated Ranks</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.clearAllCatansVotes()">Clear Catans Votes</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.syncUserVotes()">Sync User Votes</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.estDistances()">Establishment Distances</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.createImagesJSON()">createImagesJSON</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.updateUrls()">updateUrls</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.getAnswerBizCode()">getAnswerBizCode</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.getSlugs()">get Slugs</button>
+	<br>
+	<button class="btn btn-default" ng-click="vm.categoryStr()">Update CatStr</button>
+	<br>
+	<br>
+	<div ng-if="vm.unrefans">
+		<div ng-repeat="x in vm.unrefans" ng-click="vm.selAns(x)">
+			<h4 class="text-left">{{$index+1}}. {{x.name}}</h4>
+			<img src="{{x.imageurl}}" style="width:120px"></br>
+			Id: {{x.id}} Added by User: {{x.userid}} </br>
+			Neighborhood: {{x.cityarea}} </br>
+			Address: {{x.location}} </br>
+			Website: {{x.website}} </br>
+			Phone: {{x.phone}} </br>
+			Additional Info: {{x.addinfo}} </br>
+			<button class="btn btn-danger" ng-click="vm.delAnswer(x)">Delete Answer</button><br>
+			<div ng-if="vm.ans == x.id">
+				<label>Add Catans</label>	
+				<input type="text" class="form-control" ng-model="vm.addctsval" bs-options="c for c in vm.addctsopts" bs-typeahead>
+        		<span class="input-group-btn text-right">
+            		<button class="btn btn-success" type="button" ng-click="vm.addcts()">Add</button>
+        		</span>
+			</div>
+		</div>
+	</div>
+	<!-- Business Code  -->
+	<div ng-if="vm.ansNoCode">
+		<div ng-repeat="x in vm.ansNoCode" ng-click="vm.selAns(x)">
+			<p class="text-left"><strong>{{$index}}.&nbsp{{x.name}}&nbsp-&nbsp{{x.bizcat}}</strong></p>
+			<div ng-repeat="y in x.cats">
+				<p class="text-left">{{y}}</p>
+			</div>
+			<div ng-if="vm.ans == x.id">
+				<label>Category</label>	
+				<input type="text" class="form-control" ng-model="vm.catcode.category">
+        		<label>Code</label>	
+				<input type="text" class="form-control" ng-model="vm.catcode.code" bs-options="c for c in vm.codes" bs-typeahead>
+        		<span class="input-group-btn text-right">
+            		<button class="btn btn-success" type="button" ng-click="vm.addcatcode()">Add Category-Code Pair</button>
+        		</span>
+			</div>	
+		</div>
+	</div>
+	<div ng-repeat="x in vm.dupAnswers track by $index">
+		<img src="{{x.image1}}" ng-attr-style="width:120px"> <img src="{{x.image2}}" style="width:120px">
+		<p> {{x.name1}} --- {{x.idx1}} --- {{x.loc1}} --- {{x.nh1}} --- {{x.add1}} --- {{x.id1}}</p>
+		<p> {{x.name2}} --- {{x.idx2}} --- {{x.loc2}} --- {{x.nh2}} --- {{x.add2}} --- {{x.id2}}</p>
+		<button class="btn btn-default" ng-click="vm.syncToFirst(x)">Sync 1st</button>
+		<button class="btn btn-default" ng-click="vm.syncToSecond(x)">Sync 2nd</button>
+		<p>-------------------------------------------------------</p>
+	</div>
+	<div ng-repeat="x in vm.dupAnsNames track by $index">
+		<img src="{{x.image1}}" ng-attr-style="width:120px"> <img src="{{x.image2}}" style="width:120px">
+		<p> {{x.name1}} --- {{x.idx1}} --- {{x.loc1}} --- {{x.nh1}} --- {{x.add1}} --- {{x.id1}}</p>
+		<p> {{x.name2}} --- {{x.idx2}} --- {{x.loc2}} --- {{x.nh2}} --- {{x.add2}} --- {{x.id2}}</p>
+		<button class="btn btn-default" ng-click="vm.syncToFirst(x)">Sync 1st</button>
+		<button class="btn btn-default" ng-click="vm.syncToSecond(x)">Sync 2nd</button>
+		<p>-------------------------------------------------------</p>
+	</div>
+	<p ng-repeat="x in vm.resDupRanks track by $index">{{x.title}} --- {{x.id}}</p>
+	<div ng-repeat="x in vm.syncp">
+	{{x.answername}} - {{x.categoryname}} - caUpV {{x.caUpV}} - nUpVotes {{x.nUpVlen}} - caDownV {{x.caDownV}} - nDownVotes {{x.nDownVlen}} <br>
+	UP VOTES <br>
+	<div ng-repeat="y in x.upVotes">
+	User:&nbsp{{y.user}} Vote:&nbsp{{y.vote}} VoteId:&nbsp{{y.id}} <a ng-click="vm.deleteDupVotes(y)">Delete</a>
+	</div>
+	DOWN VOTES <br>
+	<div ng-repeat="y in x.downVotes">
+	User:&nbsp{{y.user}} Vote:&nbsp{{y.vote}} VoteId:&nbsp{{y.id}} <a ng-click="vm.deleteDupVotes(y)">Delete</a>
+	</div>
+	<button class="btn btn-primary" ng-click="vm.updatecatans(x)">Fix</button>
+	</div>
+	<div ng-repeat="x in vm.answerdist">
+		<div class="row">
+			{{x.name}} - {{x.location}} - {{x.dist}}
+			<button class="btn btn-default" ng-click="vm.gotoAnswer(x)">Go to Answer</button>
+			<button class="btn btn-primary" ng-click="vm.selEditAddress(x)">Edit</button>
+		</div>
+		<div ng-if="vm.ans == x.id">
+			<br>
+			<input type="text" class="form-control" ng-model="x.location">
+        	<span class="input-group-btn text-right">
+            	<button class="btn btn-success" type="button" ng-click="vm.editAddress(x)">Edit</button>
+        	</span>
+		</div>
+	</div>
+	<button ng-if="vm.dupAnsRdy" class="btn btn-primary" ng-click="vm.goMerge()">Go Merge Screen</button>
+	<div ng-if="vm.catstrmode">
+		<div class="progress">
+			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="vm.cpct" aria-valuemin="0" aria-valuemax="100"
+			 style="width:{{vm.cpct}}%">
+				{{vm.cpct}}%
+			</div>
+			<p>Updating Category Strings</p>
+		</div>
+	</div>
+</div>
